@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>Seoul Hiking Platform – Magazine Style</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Sedgwick+Ave+Display&display=swap" rel="stylesheet">
+<style>
+body {margin:0; font-family: Montserrat; background:#faf9f7; color:#222;}
+/* HEADER */
+header {background:white; padding:15px 35px; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #ddd; position:sticky; top:0; z-index:10;}
+.logo img{height: 50px;}
+header a{text-decoration:none; color:#333;}
+nav a {margin-left:28px; text-decoration:none; color:#333; font-weight:500;}
+nav a:hover {color:#000;}
+.icon-bar img {width:24px; margin-left:18px; cursor:pointer; opacity:0.7;}
+.icon-bar img:hover {opacity:1;}
+/* HERO */
+.hero {height:560px; background:url('./banner.jpeg') center/cover no-repeat; display:flex; justify-content:center; align-items:center; color:white; text-shadow:0 3px 8px rgba(0,0,0,0.6);flex-direction: column;} 
+.hero h1 {font-size:100px; font-weight:700;margin:0;}
+/* CONTAINER */
+.container {max-width:1250px; margin:auto;padding: 40px 40px 60px;}
+/* CARD GRID */
+.card-grid {display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); gap:28px;}
+.card {background:white; border-radius:12px; box-shadow:0 4px 16px rgba(0,0,0,0.08); overflow:hidden;}
+.card img {width:100%; object-fit:cover;}
+.highlight img{height: 584.83px;}
+.card .imgbox {overflow:hidden;}
+.card-content {padding:20px;background:white;text-align: center;}
+.btn {padding:10px 20px; display:inline-block; background:#4caf50; color:white; text-decoration:none; border-radius:5px; font-size:15px;}
+.btn:hover {opacity:0.85;}
+  .sedgwick-ave-display-regular h1{
+  font-family: "Sedgwick Ave Display", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* PAGE */
+.page {display:none;}
+/* FOOTER */
+/* footer {background:#6A8518; color:#ddd; padding:40px 60px; margin-top:80px;} */
+footer .footer-grid {display:flex; align-items:flex-start; gap:40px; flex-wrap:wrap;}
+footer h4 {color:white; margin-bottom:15px;}
+footer a {display:block; color:#ccc; text-decoration:none; margin:4px 0;}
+footer a:hover {color:white;}
+.cibox {width: 200px;
+    position: absolute;
+    right: 0;
+    margin-right: 40px;}
+/* IMAGE HOVER ROTATE */
+.card-grid .card img {height:265px; transition: width, height, transform .7s ease;object-fit:cover;}
+.card-grid .imgbox img:first-child:hover {transform: scale(1.1) rotate(2deg);} 
+/* GALLERY FLIP CARDS */
+.gallery-grid {display:grid; grid-template-columns:repeat(auto-fit, minmax(260px,1fr)); gap:24px; perspective:1000px;}
+.flip-card {background:transparent; width:100%; height:260px;}
+.flip-inner {position:relative; width:100%; height:100%; transition:transform 0.6s; transform-style:preserve-3d;}
+.flip-card:hover .flip-inner {transform:rotateY(180deg);}
+.flip-front, .flip-back {position:absolute; width:100%; height:100%; backface-visibility:hidden; border-radius:12px; overflow:hidden; box-shadow:0 4px 16px rgba(0,0,0,0.15);} 
+.flip-front img {width:100%; height:100%; object-fit:cover;}
+.flip-back {transform:rotateY(180deg);}
+.flip-back img {width:100%; height:100%; object-fit:cover; filter:grayscale(100%);} 
+.flip-back-overlay {position:absolute; inset:0; background:rgba(0,0,0,0.45); display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; color:#fff; padding:20px;}
+.flip-back-overlay h3 {margin-bottom:8px; font-size:18px;}
+.flip-back-overlay p {margin:0; font-size:14px; opacity:0.9;}
+/* GUIDEBOOK LIBRARY */
+.guide-layout {display:grid; grid-template-columns:repeat(auto-fit, minmax(320px,1fr)); gap:24px; margin-top:30px;}
+.guide-block {background:#fff; border-radius:12px; padding:24px 22px; box-shadow:0 4px 16px rgba(0,0,0,0.06);}
+.guide-block h3 {margin:0 0 8px; font-size:20px;}
+.guide-block p.desc {margin:0 0 16px; font-size:14px; color:#666;}
+.guide-list {margin-top:8px;}
+.guide-item {display:flex; align-items:center; justify-content:space-between; gap:12px; padding:10px 0; border-top:1px solid #f0f0f0;}
+.guide-item:first-child {border-top:none;}
+.guide-item .btn{display:none;}
+.guide-meta {display:flex; align-items:center; gap:10px;}
+.lang-badge {display:inline-flex; align-items:center; justify-content:center; min-width:32px; padding:4px 8px; border-radius:999px; background:#eef5e3; color:#4caf50; font-size:11px; font-weight:700; letter-spacing:0.03em;}
+.guide-name {font-size:14px; font-weight:500;}
+.guide-actions {display:flex; gap:8px;}
+.btn-ghost {text-align: center; width:62px; padding:8px 14px; border-radius:5px; border:1px solid #4caf50; background:transparent; color:#4caf50; font-size:15px; text-decoration:none;}
+.btn-ghost:hover {background:#f4fbf4;}
+</style>
+
+<style>
+    /* * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Noto Sans KR", system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      background: #f7f7f7;
+      color: #02202a;
+      line-height: 1.5;
+    } */
+
+    /* img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    } */
+
+    .page {
+      /* max-width: 1200px; */
+      margin: 0 auto;
+      /* background: #ffffff;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06); */
+    }
+
+    /* HEADER */
+
+    /* .main-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 40px;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #e3ecef;
+    } */
+
+    /* .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-mark {
+      width: 44px;
+      height: 28px;
+      border-radius: 4px;
+      background: linear-gradient(135deg, #008b76, #2a6f9b);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.06em;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .logo-text .en {
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+    }
+
+    .logo-text .ko {
+      font-size: 11px;
+      color: #4c707f;
+      margin-top: 2px;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      font-size: 14px;
+    }
+
+    .nav a {
+      position: relative;
+      font-weight: 500;
+      color: #0c3341;
+    }
+
+    .nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0;
+      height: 2px;
+      background: #008b76;
+      transition: width 0.2s ease;
+    }
+
+    .nav a:hover::after {
+      width: 100%;
+    }
+
+    .icon-btn {
+      border: 1px solid #d1dde1;
+      background: #ffffff;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      cursor: pointer;
+    } */
+
+    /* HERO */
+
+    /* .hero {
+      position: relative;
+      height: 360px;
+      background-image:
+        linear-gradient(to top, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.15)),
+        url("https://images.pexels.com/photos/4603765/pexels-photo-4603765.jpeg?auto=compress&cs=tinysrgb&w=1600");
+      background-size: cover;
+      background-position: center;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    } */
+
+    .hero-inner {
+      max-width: 480px;
+    }
+
+    .hero-logo {
+      font-size: 40px;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      margin-bottom: 6px;
+    }
+
+    .hero-icon {
+      font-size: 60px;
+      margin-bottom: 10px;
+    }
+
+    .hero-sub {
+      font-size: 18px;
+      font-weight: 500;
+    }
+
+    /* SECTIONS */
+
+    section {
+      margin-bottom: 52px;
+    }
+
+    .section-title {
+      font-size: 20px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .section-title::before {
+      content: "";
+      width: 4px;
+      height: 18px;
+      border-radius: 999px;
+      background: #00454a;
+    }
+
+    /* PROGRAM SECTION */
+
+    .program-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-bottom: 25px;
+    }
+
+    .program-card {
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      min-height: 550px;
+      background-size: cover;
+      background-position: center;
+      cursor: pointer;
+    }
+
+    .program-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      /* background: linear-gradient(to top, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.1)); */
+    }
+    .program-center {
+        float: right;
+        margin: 10px;
+        padding: 8px 12px;
+        background: #09102370;
+        border-radius: 8px;
+        color: lightblue;
+        font-size: 14px;
+    }
+
+    .program-label {
+      position: absolute;
+      left: 16px;
+      bottom: 14px;
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 600;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+      line-height: 1.3;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 11px 54px;
+      border-radius: 999px;
+      background: #00454a;
+      color: #ffffff;
+      font-size: 18px;
+      font-weight: 300;
+      border: none;
+      cursor: pointer;
+      gap: 6px;
+    }
+
+    .btn-primary span.arrow {
+      font-size: 13px;
+    }
+
+    /* RENTAL SECTION */
+
+    .rental-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .rental-card {
+      border-radius: 12px;
+      overflow: hidden;
+      background: #ffffff;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .rental-img {
+      height: 180px;
+      background-position: center;
+      background-size: cover;
+    }
+
+    .rental-body {
+      padding: 10px 12px 12px;
+      font-size: 13px;
+    }
+
+    .rental-name {
+      margin-bottom: 4px;
+      font-weight: 500;
+    }
+
+    .rental-price {
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    /* CENTER SECTION */
+
+    .center-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .center-card {
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      min-height: 360px;
+      background-size: cover;
+      background-position: center;
+      color: #ffffff;
+      font-size: 11px;
+    }
+
+    .center-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.04));
+    }
+
+    .center-content {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 16px;
+    }
+
+    .center-name {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .center-info-line {
+      margin-bottom: 2px;
+      opacity: 0.9;
+    }
+
+    /* INFRA SECTION */
+
+    .infra-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .infra-card {
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      min-height: 180px;
+      background-size: cover;
+      background-position: center;
+      color: #ffffff;
+      cursor: pointer;
+    }
+
+    .infra-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0));
+    }
+
+    .infra-label {
+      position: absolute;
+      left: 18px;
+      bottom: 16px;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    /* FOOTER */
+
+    footer {
+      padding: 40px;
+      background: #00454a;
+      color: #f5fbfc;
+      font-size: 12px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      font-size: 14px;
+    }
+
+    .footer-title {
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .footer-contact-line {
+      margin-bottom: 2px;
+      padding-left: 10px;
+      opacity: 0.9;
+    }
+
+    .footer-logo {
+      font-size: 11px;
+      text-align: right;
+      opacity: 0.9;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 1024px) {
+      .main-header {
+        padding: 10px 20px;
+      }
+      .rental-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+
+    @media (max-width: 768px) {
+      .nav {
+        display: none;
+      }
+      .hero {
+        height: 260px;
+      }
+      .hero-logo {
+        font-size: 32px;
+      }
+      .program-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .rental-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .center-grid,
+      .infra-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .program-grid {
+        grid-template-columns: 1fr;
+      }
+      .rental-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
+<script>
+function showPage(id){document.querySelectorAll('.page').forEach(p=>p.style.display='none'); document.getElementById(id).style.display='block'; window.scrollTo(0,0);} 
+</script>
+</head>
+<body>
+<header>
+    <a class="logo" href="#" onclick="showPage('home')">
+        <img src="./logo.png">
+    </a>
+    <nav>
+        <a href="#" onclick="showPage('rentals')">HIKING RENTALS</a>
+        <a href="#" onclick="showPage('programs')">PROGRAMS</a>
+        <a href="#" onclick="showPage('gallery')">GALLERY</a>
+        <a href="#" onclick="showPage('guidebook')">GUIDEBOOKS</a>
+    </nav>
+    <div class="icon-bar">
+        <img src="https://img.icons8.com/ios-glyphs/30/000000/instagram-new.png" style="cursor:pointer;" onclick="window.open('https://www.instagram.com/seoulhikingtourism_official/', '_blank'); event.stopPropagation();">
+        <img src="https://img.icons8.com/ios-glyphs/30/000000/globe.png">
+    </div>
+</header>
+<!-- MAIN CONTENT -->
+<main class="page" id="home" style="display: block;">
+    <!-- PROGRAMS -->
+     <!-- id="programs" -->
+<section>
+    <div class="hero sedgwick-ave-display-regular"><h1>HILiKE SEOUL </h1><h2>Hike it, Like it SEOUL!</h2></div>
+    <div class="container">
+        <h2 class="section-title">프로그램 신청</h2>
+
+        <div class="program-grid">
+            <article class="program-card"
+            style="background-image:url('./san1.jpg');">
+            <div class="program-center">북한산센터</div>
+            <div class="program-label">
+                Seoul<br />Heritage Walk
+            </div>
+            </article>
+
+            <article class="program-card"
+            style="background-image:url('./san2.jpg');">
+            <div class="program-center">북악산센터</div>
+            <div class="program-label">
+                Seoul<br />Tasty Trail
+            </div>
+            </article>
+
+            <article class="program-card"
+            style="background-image:url('./san3.jpg');">
+            <div class="program-center">관악산센터</div>
+            <div class="program-label">
+                Seoul<br />Forest &amp; Mind Trek
+            </div>
+            </article>
+
+        </div>
+        <div style="text-align: center;">
+        <button class="btn-primary" onclick="showPage('programs')">
+            프로그램 신청하기
+            <span class="arrow">→</span>
+        </button>
+    </div>
+    </section>
+
+    <!-- RENTAL -->
+    <section id="rental">
+        <div class="container">
+            <h2 class="section-title">장비대여</h2>
+            <div class="rental-grid">
+                <article class="rental-card">
+                <div class="rental-img"
+                    style="background-image:url('./item1.jpg');">
+                </div>
+                <div class="rental-body">
+                    <div class="rental-name">Hiking Boots</div>
+                    <div class="rental-price">5,000원</div>
+                </div>
+                </article>
+
+                <article class="rental-card">
+                <div class="rental-img"
+                    style="background-image:url('./item6.jpg');">
+                </div>
+                <div class="rental-body">
+                    <div class="rental-name">Hiking Jacket</div>
+                    <div class="rental-price">5,000원</div>
+                </div>
+                </article>
+
+                <article class="rental-card">
+                <div class="rental-img"
+                    style="background-image:url('./item4.jpg');">
+                </div>
+                <div class="rental-body">
+                    <div class="rental-name">Hiking Shirts, Pants</div>
+                    <div class="rental-price">2,000원</div>
+                </div>
+                </article>
+
+                <article class="rental-card">
+                <div class="rental-img"
+                    style="background-image:url('./item5.jpg');">
+                </div>
+                <div class="rental-body">
+                    <div class="rental-name">Backpack &amp; Bags</div>
+                    <div class="rental-price">2,000원</div>
+                </div>
+                </article>
+
+                <article class="rental-card">
+                <div class="rental-img"
+                    style="background-image:url('./item3.jpg');">
+                </div>
+                <div class="rental-body">
+                    <div class="rental-name">Extra Gears</div>
+                    <div class="rental-price">2,000원</div>
+                </div>
+                </article>
+            </div>  
+        </div>
+        
+    </section>
+
+    <!-- CENTER INFO -->
+    <section id="centers">
+        <div class="container">
+            <h2 class="section-title">센터 안내</h2>
+
+            <div class="center-grid">
+                <article class="center-card"
+                style="background-image:url('./gallery/bh4.jpg');">
+                <div class="center-content">
+                    <div class="center-name">북한산 센터</div>
+                    <div class="center-info-line">주소 | 서울특별시 강북구 삼양로173길 52 광립빌딩 5층</div>
+                    <div class="center-info-line">영업시간 | 09:00 ~ 18:00</div>
+                    <div class="center-info-line">이용안내 | 1533-2608</div>
+                </div>
+                </article>
+
+                <article class="center-card"
+                style="background-image:url('./gallery/bk2.png');">
+                <div class="center-content">
+                    <div class="center-name">북악산 센터</div>
+                    <div class="center-info-line">주소 | 서울특별시 종로구 평창문화로 118 1층</div>
+                    <div class="center-info-line">영업시간 | 09:00 ~ 18:00</div>
+                    <div class="center-info-line">이용안내 | 1533-2158</div>
+                </div>
+                </article>
+
+                <article class="center-card"
+                style="background-image:url('./gallery/gk1.png');">
+                <div class="center-content">
+                    <div class="center-name">관악산 센터</div>
+                    <div class="center-info-line">주소 | 서울특별시 관악구 신림로 23</div>
+                    <div class="center-info-line">영업시간 | 09:00 ~ 18:00</div>
+                    <div class="center-info-line">이용안내 | 1533-2162</div>
+                </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- INFRA -->
+    <section id="infra">
+        <div class="container">
+            <h2 class="section-title">연계 인프라 소개</h2>
+
+            <div class="infra-grid">
+                <article class="infra-card"
+                style="background-image:url('./infra1.jpg');">
+                <div class="infra-label">한강버스</div>
+                </article>
+
+                <article class="infra-card"
+                style="background-image:url('./infra2.png');">
+                <div class="infra-label">따릉이</div>
+                </article>
+
+                <article class="infra-card"
+                    style="background-image:url('./infra3.jpg');">
+                    <div class="infra-label">먹거리</div>
+                </article>
+                </div>
+            </div>
+        </div>
+    
+      </section>
+    </main>
+<!-- HOME (ABOUT) -->
+<!-- <section class="page" id="home" style="display:block;">
+    <div class="hero sedgwick-ave-display-regular"><h1>HILiKE SEOUL </h1><h2>Hike it, Like it SEOUL!</h2></div>
+    <div class="container">
+        <p style="text-align:center;">서울등산관광센터는 서울 전역의 둘레길, 숲길, 탐방코스를 안내하며 하이킹 장비 대여, 프로그램 운영, 해설 투어 등 다양한 서비스를 제공합니다.</p>
+        <div class="section-title">HIKING CENTERS</div>
+        <div class="card-grid">
+            <div class="card">
+                <div class="imgbox"><img src="./center1.jpg"></div>
+                <div class="card-content">
+                    <h3>북한산 센터</h3>
+                    <p>서울특별시 강북구 삼양로173길 52 광림빌딩 5층</p>
+                    <p>영업시간: 09:00~18:00 (월요일·명절 휴무)</p>
+                    <p>이용안내: 1533-2608</p>
+                    <a href="https://map.kakao.com/?urlX=502132&urlY=1156322&urlLevel=3&map_type=TYPE_MAP&map_hybrid=false" target="_blank"><img width="504" height="310" src="https://staticmap.kakao.com/map/mapservice?FORMAT=PNG&SCALE=2.5&MX=502133&MY=1156323&S=0&IW=504&IH=310&LANG=0&COORDSTM=WCONGNAMUL&logo=kakao_logo" style="border:1px solid #ccc"></a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="imgbox"><img src="./center2.jpg"></div>
+                <div class="card-content">
+                    <h3>북악산 센터</h3>
+                    <p>서울특별시 종로구 삼청로88 1층</p>
+                    <p>영업시간: 09:00~18:00 (화요일·명절 휴무)</p>
+                    <p>이용안내: 1533-2158</p>
+                    <a href="https://map.kakao.com/?urlX=496025&urlY=1134354&urlLevel=3&map_type=TYPE_MAP&map_hybrid=false" target="_blank"><img width="504" height="310" src="https://staticmap.kakao.com/map/mapservice?FORMAT=PNG&SCALE=2.5&MX=496027&MY=1134352&S=0&IW=504&IH=310&LANG=0&COORDSTM=WCONGNAMUL&logo=kakao_logo" style="border:1px solid #ccc"></a>
+
+                </div>
+            </div>
+            <div class="card">
+                <div class="imgbox"><img src="./center3.jpg"></div>
+                <div class="card-content">
+                    <h3>관악산 센터</h3>
+                    <p>서울특별시 관악구 신림로 23</p>
+                    <p>영업시간: 09:00~18:00 (수요일·명절 휴무)</p>
+                    <p>이용안내: 1533-2162</p>
+                    <a href="https://map.kakao.com/?urlX=487935&urlY=1102591&urlLevel=3&map_type=TYPE_MAP&map_hybrid=false" target="_blank"><img width="504" height="310" src="https://staticmap.kakao.com/map/mapservice?FORMAT=PNG&SCALE=2.5&MX=487937&MY=1102590&S=0&IW=504&IH=310&LANG=0&COORDSTM=WCONGNAMUL&logo=kakao_logo" style="border:1px solid #ccc"></a>
+
+                </div>
+            </div>
+        </div>
+        <div class="section-title">HIGHLIGHTS</div>
+        <div class="card-grid">
+            <div class="card highlight"><img src="./high1.jpg"><div class="card-content"><h3>서울둘레길 157km</h3><p>서울을 한 바퀴 잇는 8개 코스.</p></div></div>
+            <div class="card highlight"><img src="./high2.jpg"><div class="card-content"><h3>센터 프로그램 운영</h3><p>숲해설, 역사 투어, 맞춤형 하이킹.</p></div></div>
+            <div class="card highlight"><img src="./high3.jpg"><div class="card-content"><h3>장비 대여 서비스</h3><p>스틱·배낭·아이젠 등 현장 렌탈.</p></div></div>
+        </div>
+    </div>
+</section> -->
+<!-- RENTALS -->
+<section class="page" id="rentals">
+    <div class="container">
+        <div class="section-title">HIKING RENTALS</div>
+        <p style="text-align:center;">하이킹 장비를 대여하고 바로 서울의 숲길을 즐겨보세요.</p>
+        <div class="card-grid">
+            <div class="card">
+                <img src="./item1.jpg">
+                <div class="card-content">
+                    <h3>Hiking Shoes</h3>
+                    <p>1일 5,000원</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="./item2.jpg">
+                <div class="card-content">
+                    <h3>Cloths & Bags</h3>
+                    <p>1일 4,000원</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="./item3.jpg">
+                <div class="card-content">
+                    <h3>Extra Gears</h3>
+                    <p>아이젠 · 장갑 · 기타 장비</p>
+                </div>
+            </div>
+        </div>
+        <div class="section-title" style="margin-top:50px;">Package Options</div>
+<div class="container" style="background:white; padding:30px; border-radius:12px; box-shadow:0 4px 18px rgba(0,0,0,0.08); margin-top:20px;">
+    <h3 style="font-size:20px; font-weight:700; margin-bottom:20px;">Select options</h3>
+    <label style="font-size:15px; color:#555;">Please select a date of use</label><br>
+    <button style="background:#ff6b00; color:white; border:none; padding:10px 20px; border-radius:6px; margin:10px 0 25px; cursor:pointer;">📅 Check availability</button>
+    <a style="float:right; font-size:14px; color:#777; cursor:pointer;">Clear all</a>
+    <div style="clear:both;"></div>
+    <h4 style="margin:25px 0 10px;">Package type</h4>
+    <div>
+        <button class="opt-btn">Hiking Shoes</button>
+        <button class="opt-btn">Hiking Jacket</button>
+        <button class="opt-btn">Hiking Shirts (F/W)</button>
+        <button class="opt-btn">Men's Pants (F/W)</button>
+        <button class="opt-btn">Women's Pants (F/W)</button>
+        <button class="opt-btn">Extra Gears</button>
+        <button class="opt-btn">Cloths & Bags</button>
+    </div>
+    <h4 style="margin:30px 0 15px;">Quantity</h4>
+    <div class="qty-box"><span>90(S) / Slim Fit</span><div><button class="qty-btn">−</button><span style="margin:0 12px;">0</span><button class="qty-btn">+</button></div></div>
+    <div class="qty-box"><span>95(M) / Slim Fit</span><div><button class="qty-btn">−</button><span style="margin:0 12px;">0</span><button class="qty-btn">+</button></div></div>
+    <div class="qty-box"><span>100(L)</span><div><button class="qty-btn">−</button><span style="margin:0 12px;">0</span><button class="qty-btn">+</button></div></div>
+    <div class="qty-box"><span>105(XL)</span><div><button class="qty-btn">−</button><span style="margin:0 12px;">0</span><button class="qty-btn">+</button></div></div>
+    <div class="qty-box"><span>110(2XL)</span><div><button class="qty-btn">−</button><span style="margin:0 12px;">0</span><button class="qty-btn">+</button></div></div>
+    <div class="qty-box"><span>115(3XL)</span><div><button class="qty-btn">−</button><span style="margin:0 12px;">0</span><button class="qty-btn">+</button></div></div>
+    <div style="margin-top:30px; font-size:18px; font-weight:700;">US$ 1.35</div>
+    <p style="font-size:13px; color:#777;">Complete all required fields to continue</p>
+    <div style="display:flex; gap:15px; margin-top:20px;">
+        <button style="flex:1; padding:14px; background:#ffcc00; border:none; border-radius:8px; cursor:pointer; font-size:16px;">Add to cart</button>
+        <button style="flex:1; padding:14px; background:#ff6b00; color:white; border:none; border-radius:8px; cursor:pointer; font-size:16px;">Book now</button>
+    </div>
+</div>
+            
+           
+        </div>
+  <style>
+        .opt-btn {
+            padding:8px 14px;
+            border:1px solid #ccc;
+            border-radius:6px;
+            background:white;
+            margin:5px;
+            cursor:pointer;
+            font-size:14px;
+        }
+        .opt-btn:hover {border-color:#ff6b00;}
+        .qty-box {
+            display:flex; justify-content:space-between; align-items:center;
+            background:#fafafa; padding:15px; border-radius:8px;
+            margin-bottom:12px;
+        }
+        .qty-btn {
+            width:32px; height:32px; border:1px solid #ccc; border-radius:6px; background:white; cursor:pointer;
+        }
+    </style>      
+    </div>
+</section>
+<!-- PROGRAMS -->
+<section class="page" id="programs">
+    <div class="container">
+        <div class="section-title">PROGRAMS</div>
+        <p style="text-align:center;">서울등산관광센터가 운영하는 다양한 참여형 프로그램입니다.</p>
+        <div class="card-grid">
+            <div class="card"><img src="./getImage.jpeg"><div class="card-content"><h3>디지털 디톡스 & 웰니스 캠프</h3><p>웅장한 자연속에서 휴식과 재충전</p><a class="btn">신청하기</a></div></div>
+            <div class="card"><img src="./getImage2.jpeg"><div class="card-content"><h3>서울 600년을 걷다!</h3><p>조선 건국부터 현대 서울까지</p><a class="btn">신청하기</a></div></div>
+            <div class="card"><img src="./getImage3.jpg"><div class="card-content"><h3>마이 K-하이킹 플래너 & 커뮤니티 허브</h3><p>나만의 플래너로 등산계획 수립</p><a class="btn">신청하기</a></div></div>
+        </div>
+    </div>
+</section>
+<!-- GALLERY -->
+<section class="page" id="gallery">
+    <div class="container">
+        <div class="section-title">GALLERY</div>
+        <div class="gallery-grid">
+            <!-- 1 -->
+            <div class="flip-card"><div class="flip-inner">
+                <div class="flip-front"><img src="./gallery/bh1.jpg"></div>
+                <div class="flip-back"><img src="./gallery/bh1.jpg" style="filter:grayscale(100%)"><div class="flip-back-overlay"><h3>북한산 센터</h3><p>..</p></div></div>
+            </div></div>
+            <div class="flip-card"><div class="flip-inner">
+                <div class="flip-front"><img src="./gallery/bh2.jpg"></div>
+                <div class="flip-back"><img src="./gallery/bh2.jpg" style="filter:grayscale(100%)"><div class="flip-back-overlay"><h3>북한산 센터</h3><p>..</p></div></div>
+            </div></div>
+            <div class="flip-card"><div class="flip-inner">
+                <div class="flip-front"><img src="./gallery/bh3.jpg"></div>
+                <div class="flip-back"><img src="./gallery/bh3.jpg" style="filter:grayscale(100%)"><div class="flip-back-overlay"><h3>북한산 센터</h3><p>..</p></div></div>
+            </div></div>
+            <div class="flip-card"><div class="flip-inner">
+                <div class="flip-front"><img src="./gallery/bh4.jpg"></div>
+                <div class="flip-back"><img src="./gallery/bh4.jpg" style="filter:grayscale(100%)"><div class="flip-back-overlay"><h3>북한산 센터</h3><p>..</p></div></div>
+            </div></div>
+            <div class="flip-card"><div class="flip-inner">
+                <div class="flip-front"><img src="./gallery/bh5.jpg"></div>
+                <div class="flip-back"><img src="./gallery/bh5.jpg" style="filter:grayscale(100%)"><div class="flip-back-overlay"><h3>북한산 센터</h3><p>..</p></div></div>
+            </div></div>
+            <div class="flip-card"><div class="flip-inner">
+                <div class="flip-front"><img src="./gallery/bk1.png"></div>
+                <div class="flip-back"><img src="./gallery/bk1.png" style="filter:grayscale(100%)"><div class="flip-back-overlay"><h3>북악산 센터</h3><p>..</p></div></div>
+            </div></div>
+            <div class="flip-card"><div class="flip-inner">
+                <div class="flip-front"><img src="./gallery/bk2.png"></div>
+                <div class="flip-back"><img src="./gallery/bk2.png" style="filter:grayscale(100%)"><div class="flip-back-overlay"><h3>북악산 센터</h3><p>..</p></div></div>
+            </div></div>
+            <div class="flip-card"><div class="flip-inner">
+                <div class="flip-front"><img src="./gallery/bk3.png"></div>
+                <div class="flip-back"><img src="./gallery/bk3.png" style="filter:grayscale(100%)"><div class="flip-back-overlay"><h3>북악산 센터</h3><p>..</p></div></div>
+            </div></div>
+            <div class="flip-card"><div class="flip-inner">
+                <div class="flip-front"><img src="./gallery/bk4.png"></div>
+                <div class="flip-back"><img src="./gallery/bk4.png" style="filter:grayscale(100%)"><div class="flip-back-overlay"><h3>북악산 센터</h3><p>..</p></div></div>
+            </div></div>
+            <div class="flip-card"><div class="flip-inner">
+                <div class="flip-front"><img src="./gallery/bk5.png"></div>
+                <div class="flip-back"><img src="./gallery/bk5.png" style="filter:grayscale(100%)"><div class="flip-back-overlay"><h3>북악산 센터</h3><p>..</p></div></div>
+            </div></div>
+            <div class="flip-card"><div class="flip-inner">
+                <div class="flip-front"><img src="./gallery/gk1.png"></div>
+                <div class="flip-back"><img src="./gallery/gk1.png" style="filter:grayscale(100%)"><div class="flip-back-overlay"><h3>관악산 센터</h3><p>..</p></div></div>
+            </div></div>
+            <div class="flip-card"><div class="flip-inner">
+                <div class="flip-front"><img src="./gallery/gk2.png"></div>
+                <div class="flip-back"><img src="./gallery/gk2.png" style="filter:grayscale(100%)"><div class="flip-back-overlay"><h3>관악산 센터</h3><p>..</p></div></div>
+            </div></div>
+            <div class="flip-card"><div class="flip-inner">
+                <div class="flip-front"><img src="./gallery/gk3.png"></div>
+                <div class="flip-back"><img src="./gallery/gk3.png" style="filter:grayscale(100%)"><div class="flip-back-overlay"><h3>관악산 센터</h3><p>..</p></div></div>
+            </div></div>
+            <div class="flip-card"><div class="flip-inner">
+                <div class="flip-front"><img src="./gallery/gk4.png"></div>
+                <div class="flip-back"><img src="./gallery/gk4.png" style="filter:grayscale(100%)"><div class="flip-back-overlay"><h3>관악산 센터</h3><p>..</p></div></div>
+            </div></div>
+        </div>
+    </div>
+</section>
+<!-- GUIDEBOOKS -->
+<section class="page" id="guidebook">
+    <div class="container">
+        <div class="section-title">GUIDEBOOKS</div>
+        <p style="text-align:center; max-width:680px; margin:0 auto 10px; font-size:14px; color:#555;">
+            서울등산관광센터에서 제공하는 공식 디지털 가이드북을 어권별로 열람·다운로드할 수 있습니다.
+        </p>
+        
+        <div class="guide-layout">
+            <!-- 서울등산관광안내서 -->
+            <div class="guide-block">
+                <h3>서울등산관광안내서</h3>
+                <p class="desc">서울의 대표 둘레길·등산로·이용 팁이 담긴 종합 안내서입니다.</p>
+                <div class="guide-list">
+                    <div class="guide-item">
+                        <div class="guide-meta">
+                            <span class="lang-badge">KR</span>
+                            <span class="guide-name">서울등산관광안내서</span>
+                        </div>
+                        <div class="guide-actions">
+                            <a class="btn-ghost" href="#" onclick="openPdf('./pdf/hikeguide/KOR.pdf')">보기</a>
+                            <a class="btn" href="./pdf/hikeguide/KOR.pdf" download>다운로드</a>
+                        </div>
+                    </div>
+                    <div class="guide-item">
+                        <div class="guide-meta">
+                            <span class="lang-badge">EN</span>
+                            <span class="guide-name">Seoul Hiking Tourism Guide</span>
+                        </div>
+                        <div class="guide-actions">
+                            <a class="btn-ghost" href="#" onclick="openPdf('./pdf/hikeguide/ENG.pdf')">View</a>
+                            <a class="btn" href="./pdf/hikeguide/ENG.pdf" download>Download</a>
+                        </div>
+                    </div>
+                    <div class="guide-item">
+                        <div class="guide-meta">
+                            <span class="lang-badge">JP</span>
+                            <span class="guide-name">ソウル登山観光ガイド</span>
+                        </div>
+                        <div class="guide-actions">
+                            <a class="btn-ghost" href="#" onclick="openPdf('./pdf/hikeguide/JAP.pdf')">閲覧</a>
+                            <a class="btn" href="./pdf/hikeguide/JAP.pdf" download>ダウンロード</a>
+                        </div>
+                    </div>
+                    <div class="guide-item">
+                        <div class="guide-meta">
+                            <span class="lang-badge">CN</span>
+                            <span class="guide-name">首尔登山观光指南</span>
+                        </div>
+                        <div class="guide-actions">
+                            <a class="btn-ghost" href="#" onclick="openPdf('./pdf/hikeguide/CHNS.pdf')">查看</a>
+                            <a class="btn" href="./pdf/hikeguide/CHNS.pdf" download>下载</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 센터별 소개자료 -->
+            <div class="guide-block">
+                <h3>센터별 소개자료</h3>
+                <p class="desc">북한산·북악산·관악산 등산관광센터 별 위치, 서비스, 시설 안내입니다.</p>
+                <div class="guide-list">
+                    <div class="guide-item">
+                        <div class="guide-meta">
+                            <span class="lang-badge">KR</span>
+                            <span class="guide-name">센터별 소개자료</span>
+                        </div>
+                        <div class="guide-actions">
+                            <a class="btn-ghost" href="#" onclick="openPdf('')">보기</a>
+                            <a class="btn" href="" download>다운로드</a>
+                        </div>
+                    </div>
+                    <div class="guide-item">
+                        <div class="guide-meta">
+                            <span class="lang-badge">EN</span>
+                            <span class="guide-name">Center Overview Leaflet</span>
+                        </div>
+                        <div class="guide-actions">
+                            <a class="btn-ghost" href="#" onclick="openPdf('')">View</a>
+                            <a class="btn" href="" download>Download</a>
+                        </div>
+                    </div>
+                    <div class="guide-item">
+                        <div class="guide-meta">
+                            <span class="lang-badge">JP</span>
+                            <span class="guide-name">センター紹介資料</span>
+                        </div>
+                        <div class="guide-actions">
+                            <a class="btn-ghost" href="#" target="_blank">閲覧</a>
+                            <a class="btn" href="" download>ダウンロード</a>
+                        </div>
+                    </div>
+                    <div class="guide-item">
+                        <div class="guide-meta">
+                            <span class="lang-badge">CN</span>
+                            <span class="guide-name">中心介绍资料</span>
+                        </div>
+                        <div class="guide-actions">
+                            <a class="btn-ghost" href="#" target="_blank">查看</a>
+                            <a class="btn" href="" download>下载</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 산 소개자료 -->
+            <div class="guide-block">
+                <h3>산 소개자료</h3>
+                <p class="desc">서울의 주요 산(북한산·북악산·관악산 등)과 코스, 난이도를 정리한 브로슈어입니다.</p>
+                <div class="guide-list">
+                    <div class="guide-item">
+                        <div class="guide-meta">
+                            <span class="lang-badge">KR</span>
+                            <span class="guide-name">산 소개자료</span>
+                        </div>
+                        <div class="guide-actions">
+                            <a class="btn-ghost" href="#" onclick="openPdf('')">보기</a>
+                            <a class="btn" href="" download>다운로드</a>
+                        </div>
+                    </div>
+                    <div class="guide-item">
+                        <div class="guide-meta">
+                            <span class="lang-badge">EN</span>
+                            <span class="guide-name">Mountain Information Brochure</span>
+                        </div>
+                        <div class="guide-actions">
+                            <a class="btn-ghost" href="#" onclick="openPdf('')">View</a>
+                            <a class="btn" href="" download>Download</a>
+                        </div>
+                    </div>
+                    <div class="guide-item">
+                        <div class="guide-meta">
+                            <span class="lang-badge">JP</span>
+                            <span class="guide-name">山の案内資料</span>
+                        </div>
+                        <div class="guide-actions">
+                            <a class="btn-ghost" href="#" target="_blank">閲覧</a>
+                            <a class="btn" href="" download>ダウンロード</a>
+                        </div>
+                    </div>
+                    <div class="guide-item">
+                        <div class="guide-meta">
+                            <span class="lang-badge">CN</span>
+                            <span class="guide-name">山介绍资料</span>
+                        </div>
+                        <div class="guide-actions">
+                            <a class="btn-ghost" href="#" target="_blank">查看</a>
+                            <a class="btn" href="" download>下载</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- FOOTER -->
+<footer>
+    <div class="footer-inner">
+        <div>
+          <div class="footer-title">서울등산관광센터 대표번호</div>
+          <div class="footer-contact-line">북한산 센터  |  1533-2608</div>
+          <div class="footer-contact-line">북악산 센터  |  1533-2158</div>
+          <div class="footer-contact-line">관악산 센터  |  1533-2162</div>
+          <div class="footer-contact" style="margin-top:20px;">
+            E-mail | seoulhiking@sto.or.kr
+          </div>
+          <p style="margin-top: 30px; font-size: 12px; color: #ffa500;">© 2026 Seoul Hiking Tourism</p>
+        </div>
+        <div class="cibox">
+          <img style="width:100%;" src="./ci1_white.png">
+        </div>
+        
+    </div>
+    
+</footer>
+<!-- PDF PREVIEW MODAL -->
+<div id="pdfModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.6); backdrop-filter:blur(4px); z-index:2000; align-items:center; justify-content:center;">
+  <div style="width:95%; height:95%; background:white; border-radius:10px; overflow:hidden; position:relative;">
+    <button onclick="closePdf()" style="position:absolute; top:10px; right:10px; background:#333; color:white; border:none; padding:6px 12px; border-radius:4px; cursor:pointer;">닫기</button>
+    <iframe id="pdfFrame" src="" style="width:100%; height:100%; border:none;"></iframe>
+  </div>
+</div>
+<script>
+function openPdf(url){
+  document.getElementById('pdfFrame').src = url;
+  document.getElementById('pdfModal').style.display = 'flex';
+}
+function closePdf(){
+  document.getElementById('pdfModal').style.display = 'none';
+  document.getElementById('pdfFrame').src = '';
+}
+</script>
+</body>
+</html>
