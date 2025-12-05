@@ -2,28 +2,35 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>Seoul Hiking Platform – Magazine Style</title>
+<title>서울 등산 관광</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://fonts.googleapis.com/css2?family=Sedgwick+Ave+Display&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
 <style>
-body {margin:0; font-family: Montserrat; background:#faf9f7; color:#222;}
+body {margin:0; font-family: "Noto Sans KR", sans-serif; background:#faf9f7; color:#222;}
 /* HEADER */
-header {background:white; padding:15px 35px; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #ddd; position:sticky; top:0; z-index:10;}
+header {overflow: hidden; background:white; padding:15px 35px; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #ddd; position:sticky; top:0; z-index:10;}
 .logo img{height: 50px;}
 header a{text-decoration:none; color:#333;}
+header .menu {
+    display: none;
+    transition: transform 1s ease;
+}
 nav a {margin-left:28px; text-decoration:none; color:#333; font-weight:500;}
 nav a:hover {color:#000;}
+.icon-bar {display: flex;}
 .icon-bar img {width:24px; margin-left:18px; cursor:pointer; opacity:0.7;}
 .icon-bar img:hover {opacity:1;}
 /* HERO */
-.hero {height:560px; background:url('./banner.jpg') center/cover no-repeat; display:flex; justify-content:center; align-items:center; color:white; text-shadow:0 3px 8px rgba(0,0,0,0.6);flex-direction: column;} 
+.hero {height:600px; background:url('./banner.jpg') center/cover no-repeat; display:flex; justify-content:center; align-items:center; color:white; text-shadow:0 3px 8px rgba(0,0,0,0.6);flex-direction: column;} 
 .hero h1 {font-size:100px; font-weight:700;margin:0;}
 /* CONTAINER */
 .container {max-width:1250px; margin:auto;padding: 40px 40px 60px;}
 /* CARD GRID */
-.card-grid {display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); gap:28px;}
+.card-grid {display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); gap:28px; margin-top: 40px;}
 .card {background:white; border-radius:12px; box-shadow:0 4px 16px rgba(0,0,0,0.08); overflow:hidden;}
-.card img {width:100%; object-fit:cover;}
+.card img {width:100%; object-fit:cover; height: 270px;}
 .highlight img{height: 584.83px;}
 .card .imgbox {overflow:hidden;}
 .card-content {padding:20px;background:white;text-align: center;}
@@ -38,7 +45,6 @@ nav a:hover {color:#000;}
 /* PAGE */
 .page {display:none;}
 /* FOOTER */
-/* footer {background:#6A8518; color:#ddd; padding:40px 60px; margin-top:80px;} */
 footer .footer-grid {display:flex; align-items:flex-start; gap:40px; flex-wrap:wrap;}
 footer h4 {color:white; margin-bottom:15px;}
 footer a {display:block; color:#ccc; text-decoration:none; margin:4px 0;}
@@ -47,9 +53,6 @@ footer a:hover {color:white;}
     position: absolute;
     right: 0;
     margin-right: 40px;}
-/* IMAGE HOVER ROTATE */
-.card-grid .card img {height:265px; transition: width, height, transform .7s ease;object-fit:cover;}
-.card-grid .imgbox img:first-child:hover {transform: scale(1.1) rotate(2deg);} 
 /* GALLERY FLIP CARDS */
 .gallery-grid {display:grid; grid-template-columns:repeat(auto-fit, minmax(260px,1fr)); gap:24px; perspective:1000px;}
 .flip-card {background:transparent; width:100%; height:260px;}
@@ -63,7 +66,7 @@ footer a:hover {color:white;}
 .flip-back-overlay h3 {margin-bottom:8px; font-size:18px;}
 .flip-back-overlay p {margin:0; font-size:14px; opacity:0.9;}
 /* GUIDEBOOK LIBRARY */
-.guide-layout {display:grid; grid-template-columns:repeat(auto-fit, minmax(350px,1fr)); gap:24px; margin-top:30px;}
+.guide-layout {display:grid; grid-template-columns:repeat(auto-fit, minmax(350px,1fr)); gap:24px; margin-top:40px;}
 .guide-block {background:#fff; border-radius:12px; padding:24px 22px; box-shadow:0 4px 16px rgba(0,0,0,0.06);}
 .guide-block h3 {margin:0 0 8px; font-size:20px;}
 .guide-block p.desc {margin:0 0 16px; font-size:14px; color:#666;}
@@ -81,7 +84,6 @@ footer a:hover {color:white;}
 
 <style>
     .page {
-      /* max-width: 1200px; */
       min-height: 1000px;
       margin: 0 auto;
       /* background: #ffffff;
@@ -110,7 +112,6 @@ footer a:hover {color:white;}
     }
 
     /* SECTIONS */
-
     section {
       margin-bottom: 52px;
     }
@@ -131,7 +132,12 @@ footer a:hover {color:white;}
       border-radius: 999px;
       background: #00454a;
     }
-
+    .container .section-title ~ p {
+        font-size: 16px;
+        text-align: center;
+        margin: 0 auto 10px;
+        color: #555;
+    }
     /* PROGRAM SECTION */
 
     .program-grid {
@@ -172,7 +178,7 @@ footer a:hover {color:white;}
       left: 16px;
       bottom: 14px;
       color: #ffffff;
-      font-size: 14px;
+      font-size: 26px;
       font-weight: 600;
       text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
       line-height: 1.3;
@@ -227,7 +233,8 @@ footer a:hover {color:white;}
 
     .rental-name {
       margin-bottom: 4px;
-      font-weight: 500;
+      font-weight: 400;
+      font-size: 15px;
     }
 
     .rental-price {
@@ -242,19 +249,35 @@ footer a:hover {color:white;}
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 18px;
     }
+    .center-box {
+        overflow: hidden;
+        border-radius: 14px;
+    }
 
     .center-card {
       position: relative;
-      border-radius: 14px;
+      /* border-radius: 14px; */
       overflow: hidden;
       min-height: 360px;
       background-size: cover;
       background-position: center;
       color: #ffffff;
       font-size: 11px;
+      object-fit:cover;
     }
+    .center-img{
+        transition: width, height, transform .7s ease;
+    }
+    .center-img img{
+        width: 100%;
+        height: 100%;
+        min-height: 360px;
+    }
+    .center-img:hover {
+        transform: scale(1.1) rotate(2deg);
+    } 
 
-    .center-card::before {
+    .center-img::before {
       content: "";
       position: absolute;
       inset: 0;
@@ -356,13 +379,37 @@ footer a:hover {color:white;}
       .rental-grid {
         grid-template-columns: repeat(3, minmax(0, 1fr));
       }
+      nav {
+        display: flex;
+      }
+    }
+    @media (min-width: 768px) {
+      nav {
+        display: flex !important;
+      }
     }
 
-
     @media (max-width: 768px) {
-      .nav {
-        display: none;
+      header {
+        padding: 15px;
+        overflow: visible;
       }
+      header .menu {display: block;}
+      nav {
+        gap: 20px;
+        font-size: 25px;
+        position: absolute;
+        background: rgba(255,255,255,0.8);
+        left: 0;
+        top: 85.5px;
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        padding: 30px 0px;
+      }
+      /* .nav {
+        display: none;
+      } */
       .hero {
         height: 260px;
       }
@@ -393,7 +440,23 @@ footer a:hover {color:white;}
   </style>
 
 <script>
-function showPage(id){document.querySelectorAll('.page').forEach(p=>p.style.display='none'); document.getElementById(id).style.display='block'; window.scrollTo(0,0);} 
+function showPage(id){
+    document.querySelectorAll('.page').forEach(p=>p.style.display='none'); 
+    document.getElementById(id).style.display='block'; 
+    window.scrollTo(0,0);
+} 
+function showMenu(){
+    if(document.querySelector('nav').hasAttribute('show')){
+        document.querySelector('nav').style.display="none";
+        document.querySelector('.menu').src = 'https://img.icons8.com/?size=100&id=dMz54mFbVirR&format=png&color=000000';
+        document.querySelector('nav').removeAttribute('show');
+    }
+    else {
+        document.querySelector('nav').style.display="flex";
+        document.querySelector('.menu').src = 'https://img.icons8.com/?size=100&id=8112&format=png&color=000000';
+        document.querySelector('nav').setAttribute('show', 'true');
+    }
+}
 </script>
 </head>
 <body>
@@ -410,7 +473,9 @@ function showPage(id){document.querySelectorAll('.page').forEach(p=>p.style.disp
     <div class="icon-bar">
         <img src="https://img.icons8.com/ios-glyphs/30/000000/instagram-new.png" style="cursor:pointer;" onclick="window.open('https://www.instagram.com/seoulhikingtourism_official/', '_blank'); event.stopPropagation();">
         <img src="https://img.icons8.com/ios-glyphs/30/000000/globe.png">
+        <img class="menu" src="https://img.icons8.com/?size=100&id=dMz54mFbVirR&format=png&color=000000" onclick="showMenu();">
     </div>
+    
 </header>
 <!-- MAIN CONTENT -->
 <main class="page" id="home" style="display: block;">
@@ -526,35 +591,45 @@ function showPage(id){document.querySelectorAll('.page').forEach(p=>p.style.disp
             <h2 class="section-title">센터 안내</h2>
 
             <div class="center-grid">
-                <article class="center-card"
-                style="background-image:url('./gallery/bh4.jpg');">
-                <div class="center-content">
-                    <div class="center-name">북한산 센터</div>
-                    <div class="center-info-line">주소 | 서울특별시 강북구 삼양로173길 52 광립빌딩 5층</div>
-                    <div class="center-info-line">영업시간 | 09:00 ~ 18:00</div>
-                    <div class="center-info-line">이용안내 | 1533-2608</div>
+                <div class="center-box">
+                    <article class="center-card">
+                        <div class="center-img">
+                            <img src='./gallery/bh2.jpg'> 
+                        </div>
+                        <div class="center-content">
+                            <div class="center-name">북한산 센터</div>
+                            <div class="center-info-line">주소 | 서울특별시 강북구 삼양로173길 52 광립빌딩 5층</div>
+                            <div class="center-info-line">영업시간 | 09:00 ~ 18:00</div>
+                            <div class="center-info-line">이용안내 | 1533-2608</div>
+                        </div>
+                    </article>
                 </div>
-                </article>
-
-                <article class="center-card"
-                style="background-image:url('./gallery/bk2.png');">
-                <div class="center-content">
-                    <div class="center-name">북악산 센터</div>
-                    <div class="center-info-line">주소 | 서울특별시 종로구 평창문화로 118 1층</div>
-                    <div class="center-info-line">영업시간 | 09:00 ~ 18:00</div>
-                    <div class="center-info-line">이용안내 | 1533-2158</div>
+                <div class="center-box">
+                    <article class="center-card">
+                        <div class="center-img">
+                            <img src='./gallery/bk2.png'> 
+                        </div>
+                        <div class="center-content">
+                            <div class="center-name">북악산 센터</div>
+                            <div class="center-info-line">주소 | 서울특별시 종로구 평창문화로 118 1층</div>
+                            <div class="center-info-line">영업시간 | 09:00 ~ 18:00</div>
+                            <div class="center-info-line">이용안내 | 1533-2158</div>
+                        </div>
+                    </article>
                 </div>
-                </article>
-
-                <article class="center-card"
-                style="background-image:url('./gallery/gk1.png');">
-                <div class="center-content">
-                    <div class="center-name">관악산 센터</div>
-                    <div class="center-info-line">주소 | 서울특별시 관악구 신림로 23</div>
-                    <div class="center-info-line">영업시간 | 09:00 ~ 18:00</div>
-                    <div class="center-info-line">이용안내 | 1533-2162</div>
+                <div class="center-box">
+                    <article class="center-card">
+                        <div class="center-img">
+                            <img src='./gallery/gk1.png'> 
+                        </div>
+                        <div class="center-content">
+                            <div class="center-name">관악산 센터</div>
+                            <div class="center-info-line">주소 | 서울특별시 관악구 신림로 23</div>
+                            <div class="center-info-line">영업시간 | 09:00 ~ 18:00</div>
+                            <div class="center-info-line">이용안내 | 1533-2162</div>
+                        </div>
+                    </article>
                 </div>
-                </article>
             </div>
         </div>
     </section>
@@ -800,7 +875,7 @@ function showPage(id){document.querySelectorAll('.page').forEach(p=>p.style.disp
 <section class="page" id="guidebook">
     <div class="container">
         <div class="section-title">GUIDEBOOKS</div>
-        <p style="text-align:center; max-width:680px; margin:0 auto 10px; font-size:14px; color:#555;">
+        <p>
             서울등산관광센터에서 제공하는 공식 디지털 가이드북을 어권별로 열람·다운로드할 수 있습니다.
         </p>
         
