@@ -43,7 +43,7 @@ footer .footer-grid {display:flex; align-items:flex-start; gap:40px; flex-wrap:w
 footer h4 {color:white; margin-bottom:15px;}
 footer a {display:block; color:#ccc; text-decoration:none; margin:4px 0;}
 footer a:hover {color:white;}
-.cibox {width: 200px;
+.cibox {width: 100px;
     position: absolute;
     right: 0;
     margin-right: 40px;}
@@ -63,7 +63,7 @@ footer a:hover {color:white;}
 .flip-back-overlay h3 {margin-bottom:8px; font-size:18px;}
 .flip-back-overlay p {margin:0; font-size:14px; opacity:0.9;}
 /* GUIDEBOOK LIBRARY */
-.guide-layout {display:grid; grid-template-columns:repeat(auto-fit, minmax(320px,1fr)); gap:24px; margin-top:30px;}
+.guide-layout {display:grid; grid-template-columns:repeat(auto-fit, minmax(350px,1fr)); gap:24px; margin-top:30px;}
 .guide-block {background:#fff; border-radius:12px; padding:24px 22px; box-shadow:0 4px 16px rgba(0,0,0,0.06);}
 .guide-block h3 {margin:0 0 8px; font-size:20px;}
 .guide-block p.desc {margin:0 0 16px; font-size:14px; color:#666;}
@@ -80,147 +80,12 @@ footer a:hover {color:white;}
 </style>
 
 <style>
-    /* * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: "Noto Sans KR", system-ui, -apple-system, BlinkMacSystemFont,
-        "Segoe UI", sans-serif;
-      background: #f7f7f7;
-      color: #02202a;
-      line-height: 1.5;
-    } */
-
-    /* img {
-      max-width: 100%;
-      display: block;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    } */
-
     .page {
       /* max-width: 1200px; */
       margin: 0 auto;
       /* background: #ffffff;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06); */
     }
-
-    /* HEADER */
-
-    /* .main-header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 12px 40px;
-      background: rgba(255, 255, 255, 0.96);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid #e3ecef;
-    } */
-
-    /* .logo-area {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .logo-mark {
-      width: 44px;
-      height: 28px;
-      border-radius: 4px;
-      background: linear-gradient(135deg, #008b76, #2a6f9b);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      font-weight: 700;
-      font-size: 11px;
-      letter-spacing: 0.06em;
-    }
-
-    .logo-text {
-      display: flex;
-      flex-direction: column;
-      line-height: 1.1;
-    }
-
-    .logo-text .en {
-      font-size: 15px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-    }
-
-    .logo-text .ko {
-      font-size: 11px;
-      color: #4c707f;
-      margin-top: 2px;
-    }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      gap: 32px;
-      font-size: 14px;
-    }
-
-    .nav a {
-      position: relative;
-      font-weight: 500;
-      color: #0c3341;
-    }
-
-    .nav a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -4px;
-      width: 0;
-      height: 2px;
-      background: #008b76;
-      transition: width 0.2s ease;
-    }
-
-    .nav a:hover::after {
-      width: 100%;
-    }
-
-    .icon-btn {
-      border: 1px solid #d1dde1;
-      background: #ffffff;
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 16px;
-      cursor: pointer;
-    } */
-
-    /* HERO */
-
-    /* .hero {
-      position: relative;
-      height: 360px;
-      background-image:
-        linear-gradient(to top, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.15)),
-        url("https://images.pexels.com/photos/4603765/pexels-photo-4603765.jpeg?auto=compress&cs=tinysrgb&w=1600");
-      background-size: cover;
-      background-position: center;
-      color: #ffffff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    } */
 
     .hero-inner {
       max-width: 480px;
@@ -504,7 +369,8 @@ footer a:hover {color:white;}
         font-size: 32px;
       }
       .program-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        display: flex;
+        flex-direction: column;
       }
       .rental-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
