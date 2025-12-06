@@ -464,7 +464,11 @@ function showPage(id){
     document.querySelectorAll('.page').forEach(p=>p.style.display='none'); 
     document.getElementById(id).style.display='block'; 
     window.scrollTo(0,0);
-    showMenu();
+    if(document.querySelector('nav').hasAttribute('show')){
+        document.querySelector('nav').style.display="none";
+        document.querySelector('.menu').src = 'https://img.icons8.com/?size=100&id=dMz54mFbVirR&format=png&color=000000';
+        document.querySelector('nav').removeAttribute('show');
+    }
 } 
 function showMenu(){
     if(document.querySelector('nav').hasAttribute('show')){
@@ -683,54 +687,7 @@ function showMenu(){
     
       </section>
     </main>
-<!-- HOME (ABOUT) -->
-<!-- <section class="page" id="home" style="display:block;">
-    <div class="hero sedgwick-ave-display-regular"><h1>HILiKE SEOUL </h1><h2>Hike it, Like it SEOUL!</h2></div>
-    <div class="container">
-        <p style="text-align:center;">서울등산관광센터는 서울 전역의 둘레길, 숲길, 탐방코스를 안내하며 하이킹 장비 대여, 프로그램 운영, 해설 투어 등 다양한 서비스를 제공합니다.</p>
-        <div class="section-title">HIKING CENTERS</div>
-        <div class="card-grid">
-            <div class="card">
-                <div class="imgbox"><img src="./center1.jpg"></div>
-                <div class="card-content">
-                    <h3>북한산 센터</h3>
-                    <p>서울특별시 강북구 삼양로173길 52 광림빌딩 5층</p>
-                    <p>영업시간: 09:00~18:00 (월요일·명절 휴무)</p>
-                    <p>이용안내: 1533-2608</p>
-                    <a href="https://map.kakao.com/?urlX=502132&urlY=1156322&urlLevel=3&map_type=TYPE_MAP&map_hybrid=false" target="_blank"><img width="504" height="310" src="https://staticmap.kakao.com/map/mapservice?FORMAT=PNG&SCALE=2.5&MX=502133&MY=1156323&S=0&IW=504&IH=310&LANG=0&COORDSTM=WCONGNAMUL&logo=kakao_logo" style="border:1px solid #ccc"></a>
-                </div>
-            </div>
-            <div class="card">
-                <div class="imgbox"><img src="./center2.jpg"></div>
-                <div class="card-content">
-                    <h3>북악산 센터</h3>
-                    <p>서울특별시 종로구 삼청로88 1층</p>
-                    <p>영업시간: 09:00~18:00 (화요일·명절 휴무)</p>
-                    <p>이용안내: 1533-2158</p>
-                    <a href="https://map.kakao.com/?urlX=496025&urlY=1134354&urlLevel=3&map_type=TYPE_MAP&map_hybrid=false" target="_blank"><img width="504" height="310" src="https://staticmap.kakao.com/map/mapservice?FORMAT=PNG&SCALE=2.5&MX=496027&MY=1134352&S=0&IW=504&IH=310&LANG=0&COORDSTM=WCONGNAMUL&logo=kakao_logo" style="border:1px solid #ccc"></a>
 
-                </div>
-            </div>
-            <div class="card">
-                <div class="imgbox"><img src="./center3.jpg"></div>
-                <div class="card-content">
-                    <h3>관악산 센터</h3>
-                    <p>서울특별시 관악구 신림로 23</p>
-                    <p>영업시간: 09:00~18:00 (수요일·명절 휴무)</p>
-                    <p>이용안내: 1533-2162</p>
-                    <a href="https://map.kakao.com/?urlX=487935&urlY=1102591&urlLevel=3&map_type=TYPE_MAP&map_hybrid=false" target="_blank"><img width="504" height="310" src="https://staticmap.kakao.com/map/mapservice?FORMAT=PNG&SCALE=2.5&MX=487937&MY=1102590&S=0&IW=504&IH=310&LANG=0&COORDSTM=WCONGNAMUL&logo=kakao_logo" style="border:1px solid #ccc"></a>
-
-                </div>
-            </div>
-        </div>
-        <div class="section-title">HIGHLIGHTS</div>
-        <div class="card-grid">
-            <div class="card highlight"><img src="./high1.jpg"><div class="card-content"><h3>서울둘레길 157km</h3><p>서울을 한 바퀴 잇는 8개 코스.</p></div></div>
-            <div class="card highlight"><img src="./high2.jpg"><div class="card-content"><h3>센터 프로그램 운영</h3><p>숲해설, 역사 투어, 맞춤형 하이킹.</p></div></div>
-            <div class="card highlight"><img src="./high3.jpg"><div class="card-content"><h3>장비 대여 서비스</h3><p>스틱·배낭·아이젠 등 현장 렌탈.</p></div></div>
-        </div>
-    </div>
-</section> -->
 <!-- RENTALS -->
 <section class="page" id="rentals">
     <div class="container">
